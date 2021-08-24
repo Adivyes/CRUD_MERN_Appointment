@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+const API = process.env.NODE_ENV === 'production'? "https://touri-as.herokuapp.com" : axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')){
