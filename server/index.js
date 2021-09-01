@@ -22,13 +22,10 @@ app.get('/',(req, res) => {
   res.send('Hello Touri');
 });
 
-const CONNECTION_URL = 'mongodb+srv://ASAppointment:ASAppointment1234@cluster0.zpdwy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(()=> app
-.listen(PORT, () => console.log(`server running on port: ${PORT}`)))
+mongoose.connect(process.env.CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=> app.listen(PORT, () => console.log(`server running on port: ${PORT}`)))
 .catch((error)=> console.log(error.message));
 
 
